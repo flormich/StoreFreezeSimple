@@ -19,7 +19,7 @@ git clone  https://github.com/flormich/storeFeezeSimple
 
 <br>
 <p align="center">
- 
+ <img src="https://github.com/flormich/StoreFreezeSimple/blob/master/ressources/storeFreezeSimple.JPG">
 <br><br>
 </p>
 
