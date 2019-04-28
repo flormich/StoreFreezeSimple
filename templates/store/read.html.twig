@@ -76,14 +76,18 @@
                             <th class="thTab borderTrue" onclick="document.location='showProductCatAsc'">Catégorie</th>
                             <th class="thTab borderTrue">Quantité en Unité</th>
                             <th class="thTab borderTrue">Quantité en Gramme</th>
-                            <th class="thTab borderTrue">DLC</th>
+                            {# <th class="thTab borderTrue">DLC</th> #}
                             <th class="thTab borderTrue" onclick="document.location='showProductTirAsc'">Congélateur</th>
-                            {# <th onclick="document.location='showProductTirAsc'">Numéro de tiroir</th> #}
-                            <th class="thTab borderTrue" colspan ="3">Intéragir</th>
+                            {# <th class="thTab borderTrue" colspan ="3">Intéragir</th> #}
+                            <th class="thTab borderTrue">Plus</th>
+                            <th class="thTab borderTrue">Moins</th>
+                            <th class="thTab borderTrue">Modifier</th>
+                            <th class="thTab borderTrue">Supprimer</th>
                         </tr>
 
                         {% for product in products %}
                             {% if product.Freezer.name|default is not empty %}
+
                                 <tr class="textShadow">
                                     <td class="pointerRead borderTrue heightCellule" onclick="document.location='{{ path('showProductName', 
                                         {'name':product.name}) }}'">
@@ -97,38 +101,63 @@
                                     {# <td>{{ product.Category.name }}</td>    #}
                                     <td class=" borderTrue">{{ product.quantityUnit }}</td>                                 
                                     <td class=" borderTrue">{{ product.quantityGr }}</td> 
-                                    <td class=" borderTrue">{{ product.dlc }}</td>
-                                    <td class=" borderTrue">
-                                    {# class="pointerRead" onclick="document.location='{{ path('showProductDrawer',  #}
-                                        {# {'name':product.Freezer.name}) }}'"> #}
-                                        {{ product.Freezer.name|default('') }}
-                                    </td>    
+                                    {# <td class=" borderTrue">{{ product.dlc }}</td> #}
+                                    <td class=" borderTrue">{{ product.Freezer.name|default('') }}</td>    
                                     {# <td>{{ product.Freezer.name|default('') }}</td> #}
                                     {# <td>{{ product.Freezer.drawer|default('') }}</td> #}
-                                    <td class="tdButton borderTrue">
-                                    {# delete button #}
-                                        <button class="Button mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate boxShadow" type="submit">                                               
-                                            <a href="{{ path('deleteProduct', {'id':product.id}) }}" style="color:white; text-decoration:none" onclick="if(!confirm('Confirmer la suppression du produit ?')) return false;">Supprimer</a>
-                                        </button>
-                                    </td>
-                                    <td class="tdButton borderTrue">           
-                                    {# update button #}
-                                        <button class="Button mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate boxShadow" type="submit">
-                                            <a href="{{ path('updateProduct', {'id':product.id}) }}" style="color:white; text-decoration:none">Modifier</a>
-                                        </button>
-                                    </td>
-                                    <td class="tdButton borderTrue">
+
                                     {# change button #}
-                                        <button class="Button mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate littleButton boxShadow" type="submit">                                               
+                                    <td class="borderTrue">
+                                        <a class="mdl-list__item-secondary-action mdl-grid" href="{{ path('changeProductAdd', {'id':product.id}) }}" style="text-decoration:none">
+                                            <i class="material-icons paragraphe">add</i>
+                                        </a>
+                                    </td>
+
+                                    {# minus button #}
+                                    <td class="borderTrue">
+                                        <a class="mdl-list__item-secondary-action mdl-grid" href="{{ path('changeProductMin', {'id':product.id}) }}" style="text-decoration:none">
+                                            <i class="material-icons paragraphe">remove</i>
+                                        </a>
+                                    </td>
+
+                                    {# <td class="tdButton borderTrue"> #}
+                                    {# change button #}
+                                        {# <button class="Button mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate littleButton boxShadow" type="submit">                                               
                                             <a href="{{ path('changeProduct', {'id':product.id}) }}" style="color:white; text-decoration:none">Changer Quantité</a>
                                         </button>
-                                    </td>
+                                    </td> #}
                                     {# <td> #}
                                      {# minus button #}
                                         {# <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
                                             <a href="{{ path('updateProduct', {'id':product.id}) }}" style="color:white; text-decoration:none"><b>-</b></a>
                                         </button> #}
                                     {# </td> #}
+
+                                    {# update button #}
+                                    <td class="borderTrue">
+                                        <a class="mdl-list__item-secondary-action mdl-grid" href="{{ path('updateProduct', {'id':product.id}) }}" style="text-decoration:none">
+                                            <i class="material-icons paragraphe">edit</i>
+                                        </a>
+                                    </td>
+
+                                    {# <td class="tdButton borderTrue">           
+                                        <button class="Button mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate boxShadow" type="submit">
+                                            <a href="{{ path('updateProduct', {'id':product.id}) }}" style="color:white; text-decoration:none">Modifier</a>
+                                        </button>
+                                    </td> #}
+
+                                    {# <td class="tdButton borderTrue"> #}
+                                    {# delete button #}
+                                    <td class="borderTrue">
+                                        <a class="mdl-list__item-secondary-action mdl-grid" href="{{ path('deleteProduct', {'id':product.id}) }}" style="text-decoration:none">
+                                            <i class="material-icons paragraphe" onclick="if(!confirm('Confirmer la suppression du produit ?')) return false;">delete</i>
+                                        </a>
+                                    </td>
+
+                                        {# <button class="Button mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate boxShadow" type="submit">                                               
+                                            <a href="{{ path('deleteProduct', {'id':product.id}) }}" style="color:white; text-decoration:none" onclick="if(!confirm('Confirmer la suppression du produit ?')) return false;">Supprimer</a>
+                                        </button>
+                                    </td> #}
                                 </tr>
                             {% endif %}
                         {% endfor %}                        

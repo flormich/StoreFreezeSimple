@@ -1,5 +1,6 @@
 .tableShowJob, td, th, table {
     margin: auto;
+    box-sizing: unset;
 }
 
 .thTab {
@@ -16,7 +17,7 @@
 }
 
 .heightCellule {
-    height: 4rem;
+    height: 3rem;
 }
 
 .borderRadius {
@@ -39,7 +40,7 @@
 }
 
 .tableShowProduct {
-    width: 86%;
+    width: 80%;
     margin-left: 7rem;
     margin: auto;
     box-shadow: 8px 8px 12px rgb(30, 30, 30);
@@ -77,6 +78,8 @@ caption {
 
 .captionTrie {
     background-color: rgba(255, 0, 0, 0.3);
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
 }
 
 th {

@@ -34,10 +34,10 @@ class Product
      */
     private $quantityGr;
 
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $dlc;
+    // /**
+    //  * @ORM\Column(type="date", nullable=true)
+    //  */
+    // private $dlc;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ProductRecette", mappedBy="product")
@@ -107,16 +107,16 @@ class Product
         return $this;
     } 
 
-    public function getDlc(): ?date
-    {
-        return $this->dlc;
-    }
+    // public function getDlc(): ?date
+    // {
+    //     return $this->dlc;
+    // }
 
-    public function setDlc(date $dlc)
-    {
-        $this->dlc = $dlc;
-        return $this;
-    }
+    // public function setDlc(date $dlc)
+    // {
+    //     $this->dlc = $dlc;
+    //     return $this;
+    // }
 
     /**
      * @return Collection|ProductRecette[]

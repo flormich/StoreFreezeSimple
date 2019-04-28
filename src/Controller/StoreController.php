@@ -212,9 +212,9 @@ class StoreController extends AbstractController
     }
 
     /**
-     * @Route("/changeP/{id}", name="changeProduct")
+     * @Route("/changeAdd/{id}", name="changeProductAdd")
      */
-    public function changeProduct(Product $products, Request $request)
+    public function changeProductAdd(Product $products, Request $request)
     {
         $oldGr = $products->getQuantityGr();
         $oldUnit = $products->getQuantityUnit();
@@ -248,6 +248,41 @@ class StoreController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/changeMin/{id}", name="changeProductMin")
+     */
+    public function changeProductMin(Product $products, Request $request)
+    {
+        $oldGr = $products->getQuantityGr();
+        $oldUnit = $products->getQuantityUnit();
+ 
+        $form = $this->createForm(StoreRegisterType::class, $products);
+ 
+        $form->handleRequest($request);
+ 
+        $newdGr = $products->getQuantityGr();
+        $newUnit = $products->getQuantityUnit();
+ 
+        $calcGr = $oldGr - $newdGr;
+        $calcUnit = $oldUnit - $newUnit;
+ 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $products->setQuantityGr($calcGr);
+            $products->setQuantityUnit($calcUnit);
+            $em->flush();
+ 
+            $request->getSession()
+                ->getFlashBag()
+                ->add('action', 'Modification du produit réussi');
+            return $this->render('app/message.html.twig', [
+                'form' => $form->createView(),
+            ]);
+        }
+    return $this->render('store/change.html.twig', [
+        'form' => $form->createView(),
+        ]);
+    }
 
     /**
      * @Route("/showProductNameAsc", name="showProductNameAsc")

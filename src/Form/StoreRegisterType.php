@@ -35,11 +35,11 @@ class StoreRegisterType extends AbstractType
                 ],
             ])
 
-            ->add('dlc', DateType::class, [
-                "label" => "Date Limite de Consomation",
-                "attr" => [
-                    'placeholder' => 'Date Limite de Consommation']
-            ])
+            // ->add('dlc', DateType::class, [
+            //     "label" => "Date Limite de Consomation",
+            //     "attr" => [
+            //         'placeholder' => 'Date Limite de Consommation']
+            // ])
             
             
 
