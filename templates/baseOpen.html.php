@@ -47,8 +47,8 @@
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
        <!-- <a class="mdl-navigation__link" href="utilisateur">Utilisateur</a> -->
-        <a class="mdl-navigation__link" href="readRecette">Les recettes</a>
-        <a class="mdl-navigation__link" href="readStore">Stock Freezer</a>
+       <!-- <a class="mdl-navigation__link" href="readRecette">Les recettes</a> -->
+        <a class="mdl-navigation__link" href="readStore">Produit dans congèle</a>
         <!-- <a class="mdl-navigation__link" href="showCv">Voir CV</a>
         <a class="mdl-navigation__link" href="newCv">Créer CV</a> -->
 
@@ -77,8 +77,8 @@
     <nav class="mdl-navigation">
     <a class="mdl-navigation__link" href="index"><img src= "../assets/pictures/icones/UrgenceEmploi.jpg" alt="StoreFreeze" width="70%"></a>
     <br>
-    <a class="mdl-navigation__link" href="readRecette">Les recettes</a>
-        <a class="mdl-navigation__link" href="readStore">Stock Freezer</a>
+      <!--<a class="mdl-navigation__link" href="readRecette">Les recettes</a>-->
+        <a class="mdl-navigation__link" href="readStore">Produits dans congèle</a>
       <br><br>
       
       <!--
