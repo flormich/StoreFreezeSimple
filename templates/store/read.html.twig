@@ -82,7 +82,7 @@
                             <th class="thTab borderTrue">Plus</th>
                             <th class="thTab borderTrue">Moins</th>
                             <th class="thTab borderTrue">Modifier</th>
-                            <th class="thTab borderTrue">Supprimer </th>
+                            <th class="thTab borderTrue">Supprimer</th>
                         </tr>
 
                         {% for product in products %}
@@ -109,14 +109,14 @@
                                     {# change button #}
                                     <td class="borderTrue">
                                         <a class="mdl-list__item-secondary-action mdl-grid" href="{{ path('changeProductAdd', {'id':product.id}) }}" style="text-decoration:none">
-                                            <i class="material-icons paragraphe">add</i>
+                                            <i class="material-icons paragraphe">add_box</i>
                                         </a>
                                     </td>
 
                                     {# minus button #}
                                     <td class="borderTrue">
                                         <a class="mdl-list__item-secondary-action mdl-grid" href="{{ path('changeProductMin', {'id':product.id}) }}" style="text-decoration:none">
-                                            <i class="material-icons paragraphe">remove</i>
+                                            <i class="material-icons paragraphe">remove_circle</i>
                                         </a>
                                     </td>
 
