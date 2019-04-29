@@ -35,13 +35,18 @@ class StoreRegisterType extends AbstractType
                 ],
             ])
 
-            // ->add('dlc', DateType::class, [
-            //     "label" => "Date Limite de Consomation",
-            //     "attr" => [
-            //         'placeholder' => 'Date Limite de Consommation']
-            // ])
-            
-            
+            ->add('dlc', TextType::class, [
+                "label" => "Date Limite de Consomation",
+                "required" => false,
+                "attr" => [
+                    'placeholder' => 'Date Limite de Consommation'],
+                    "constraints" => [
+                        // new Regex([
+                        //     "pattern" => "/[d{2}\/\d{4}\]/u",
+                        //     "message" => "error.date",
+                        // ]),
+                    ],
+            ])
 
             ->add('quantityUnit', IntegerType::class, [
                 "label" => "Quantités Unitaires",

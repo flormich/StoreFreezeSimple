@@ -76,7 +76,7 @@
                             <th class="thTab borderTrue" onclick="document.location='showProductCatAsc'">Catégorie</th>
                             <th class="thTab borderTrue">Quantité en Unité</th>
                             <th class="thTab borderTrue">Quantité en Gramme</th>
-                            {# <th class="thTab borderTrue">DLC</th> #}
+                            <th class="thTab borderTrue">DLC</th>
                             <th class="thTab borderTrue" onclick="document.location='showProductTirAsc'">Congélateur</th>
                             {# <th class="thTab borderTrue" colspan ="3">Intéragir</th> #}
                             <th class="thTab borderTrue">Plus</th>
@@ -101,7 +101,7 @@
                                     {# <td>{{ product.Category.name }}</td>    #}
                                     <td class=" borderTrue">{{ product.quantityUnit }}</td>                                 
                                     <td class=" borderTrue">{{ product.quantityGr }}</td> 
-                                    {# <td class=" borderTrue">{{ product.dlc }}</td> #}
+                                    <td class=" borderTrue">{{ product.dlc }}</td>
                                     <td class=" borderTrue">{{ product.Freezer.name|default('') }}</td>    
                                     {# <td>{{ product.Freezer.name|default('') }}</td> #}
                                     {# <td>{{ product.Freezer.drawer|default('') }}</td> #}
@@ -164,7 +164,7 @@
                     </tbody>
                 </table>
             </div>
-            <br>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
         {% include 'baseClose.html.php' %}
     </section>
