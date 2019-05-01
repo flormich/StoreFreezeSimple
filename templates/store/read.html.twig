@@ -37,13 +37,11 @@
                         </tr>
                         {% endfor %}
                     </tbody>
-{# </table> #}
                     <tr>
                         <td>
                             <br><br><br>
                         </td>
                     </tr>
-{# <table> #}
                     <thead>
                         <th class="captionTrie pointerRead borderTrue" onclick="document.location='{{ path('readStore') }}'">Trier par produit</th>
                     </thead>
@@ -120,19 +118,6 @@
                                         </a>
                                     </td>
 
-                                    {# <td class="tdButton borderTrue"> #}
-                                    {# change button #}
-                                        {# <button class="Button mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate littleButton boxShadow" type="submit">                                               
-                                            <a href="{{ path('changeProduct', {'id':product.id}) }}" style="color:white; text-decoration:none">Changer Quantité</a>
-                                        </button>
-                                    </td> #}
-                                    {# <td> #}
-                                     {# minus button #}
-                                        {# <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate" type="submit">
-                                            <a href="{{ path('updateProduct', {'id':product.id}) }}" style="color:white; text-decoration:none"><b>-</b></a>
-                                        </button> #}
-                                    {# </td> #}
-
                                     {# update button #}
                                     <td class="borderTrue">
                                         <a class="mdl-list__item-secondary-action mdl-grid" href="{{ path('updateProduct', {'id':product.id}) }}" style="text-decoration:none">
@@ -140,24 +125,12 @@
                                         </a>
                                     </td>
 
-                                    {# <td class="tdButton borderTrue">           
-                                        <button class="Button mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate boxShadow" type="submit">
-                                            <a href="{{ path('updateProduct', {'id':product.id}) }}" style="color:white; text-decoration:none">Modifier</a>
-                                        </button>
-                                    </td> #}
-
-                                    {# <td class="tdButton borderTrue"> #}
                                     {# delete button #}
                                     <td class="borderTrue">
                                         <a class="mdl-list__item-secondary-action mdl-grid" href="{{ path('deleteProduct', {'id':product.id}) }}" style="text-decoration:none">
                                             <i class="material-icons paragraphe" onclick="if(!confirm('Confirmer la suppression du produit ?')) return false;">delete</i>
                                         </a>
                                     </td>
-
-                                        {# <button class="Button mdl-button mdl-js-button mdl-button--raised mdl-button--myColorValidate boxShadow" type="submit">                                               
-                                            <a href="{{ path('deleteProduct', {'id':product.id}) }}" style="color:white; text-decoration:none" onclick="if(!confirm('Confirmer la suppression du produit ?')) return false;">Supprimer</a>
-                                        </button>
-                                    </td> #}
                                 </tr>
                             {% endif %}
                         {% endfor %}                        
