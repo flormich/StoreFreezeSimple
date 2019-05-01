@@ -12,7 +12,6 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class StoreRegisterType extends AbstractType
 {
@@ -60,7 +59,7 @@ class StoreRegisterType extends AbstractType
                 ],
             ])
 
-            ->add('QuantityGr', IntegerType::class, [
+            ->add('quantityGr', IntegerType::class, [
                 "label" => "Quantités en Grammes",
                 "attr" => [
                     'placeholder' => 'Quantités en Grammes'],

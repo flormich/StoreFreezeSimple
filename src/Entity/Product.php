@@ -83,24 +83,24 @@ class Product
         return $this;
     } 
 
-    public function getQuantityUnit(): ?string
+    public function getQuantityUnit(): ?int
     {
         return $this->quantityUnit;
     }
 
-    public function setQuantityUnit(string $quantityUnit): self
+    public function setQuantityUnit(int $quantityUnit): self
     {
         $this->quantityUnit = $quantityUnit;
 
         return $this;
     } 
 
-    public function getQuantityGr(): ?string
+    public function getQuantityGr(): ?int
     {
         return $this->quantityGr;
     }
 
-    public function setQuantityGr(string $quantityGr): self
+    public function setQuantityGr(int $quantityGr): self
     {
         $this->quantityGr = $quantityGr;
 
