@@ -17,12 +17,12 @@ class ProductRecette
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\product", inversedBy="recette")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="recette")
      */
     private $product;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\recette", inversedBy="productRecettes")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Recette", inversedBy="productRecettes")
      */
     private $recette;
 

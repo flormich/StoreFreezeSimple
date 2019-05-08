@@ -27,7 +27,7 @@ class Book
     private $color;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\page")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Page")
      * @ORM\JoinColumn(nullable=false)
      */
     private $page;

@@ -54,7 +54,7 @@ class Recette
     private $productRecettes;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\plat")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Plat")
      * @ORM\JoinColumn(nullable=false)
      */
     private $plat;
@@ -65,12 +65,12 @@ class Recette
     // private $ingredientRecipe;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\book")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Book")
      */
     private $book;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\pictureRecette")
+     * @ORM\ManyToOne(targetEntity="App\Entity\PictureRecette")
      */
     private $pictureRecette;
 

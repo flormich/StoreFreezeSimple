@@ -70,13 +70,15 @@
                 <table class="tableShowProduct backgroundWhite borderTrue">
                     <tbody class="pointerRead">
                         <tr>
-                            <th class="thTab borderTrue" onclick="document.location='showProductNameAsc'">Nom du produit</th>
-                            <th class="thTab borderTrue" onclick="document.location='showProductCatAsc'">Catégorie</th>
-                            <th class="thTab borderTrue">Quantité en Unité</th>
-                            <th class="thTab borderTrue">Quantité en Gramme</th>
-                            <th class="thTab borderTrue">DLC</th>
-                            <th class="thTab borderTrue" onclick="document.location='showProductTirAsc'">Congélateur</th>
-                            {# <th class="thTab borderTrue" colspan ="3">Intéragir</th> #}
+                            <th rowspan="2" class="thTab borderTrue" onclick="document.location='showProductNameAsc'">Nom du produit</th>
+                            <th rowspan="2" class="thTab borderTrue" onclick="document.location='showProductCatAsc'">Catégorie</th>
+                            <th rowspan="2" class="thTab borderTrue">Quantité en Unité</th>
+                            <th rowspan="2" class="thTab borderTrue">Quantité en Gramme</th>
+                            <th rowspan="2" class="thTab borderTrue">DLC</th>
+                            <th rowspan="2" class="thTab borderTrue" onclick="document.location='showProductTirAsc'">Congélateur</th>
+                            <th class="thTab borderTrue" colspan ="4">Intéragir</th>
+                        </tr>
+                        <tr>
                             <th class="thTab borderTrue">Plus</th>
                             <th class="thTab borderTrue">Moins</th>
                             <th class="thTab borderTrue">Modifier</th>
