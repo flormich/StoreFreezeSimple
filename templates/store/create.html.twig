@@ -34,24 +34,46 @@
             }
             }) }} #}
             <div class="border col-12 col-lg6">
-                <br>
-                {{ form_row(form.name) }}
-                <br>
-                {{ form_row(form.Category) }}
-                <br>
-                {{ form_row(form.quantityGr) }}
-                <br>
-                {{ form_row(form.quantityUnit) }}
-                <br>
-                {{ form_row(form.dlc) }}
-                <br>
-                {{ form_row(form.Freezer) }}
-                <br>
-                <button class="material-icons mdl-button--myColorValidate mdl-js-button" type="submit">done_outline</button>
-                <br>
-                {{ form_end(form) }}
-                {# {{ form_end(form2) }} #}
-                <br>
+                <table>
+                    {# <tbody>                            #}
+                        <tr>
+                            <td colspan="2">
+                                <br>
+                                {{ form_row(form.name) }}
+                                <br>
+                                {{ form_row(form.Category) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>
+                                {{ form_row(form.quantityGr) }}
+                            </td>
+                            <td>
+                                <br>
+                                {{ form_row(form.quantityUnit) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  colspan="2">
+                                <br>
+                                {{ form_row(form.dlc) }}
+                                <br>
+                                {{ form_row(form.Freezer) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <br>
+                                <button class="material-icons mdl-button--myColorValidate mdl-js-button" type="submit">done_outline</button>
+                                <br>
+                                {{ form_end(form) }}
+                                {# {{ form_end(form2) }} #}
+                                <br>
+                            </td>
+                        </tr>
+                    {# </tbody> #}
+                </table>
             </div>
             <br>
         </div>                    

@@ -71,6 +71,7 @@
                     <tbody class="pointerRead">
                         <tr>
                             <th rowspan="2" class="thTab borderTrue" onclick="document.location='showProductNameAsc'">Nom du produit</th>
+                            <th rowspan="2" class="thTab borderTrue">Picture</th>
                             <th rowspan="2" class="thTab borderTrue" onclick="document.location='showProductCatAsc'">Catégorie</th>
                             <th rowspan="2" class="thTab borderTrue">Quantité en Unité</th>
                             <th rowspan="2" class="thTab borderTrue">Quantité en Gramme</th>
@@ -92,7 +93,11 @@
                                     <td class="pointerRead borderTrue heightCellule" onclick="document.location='{{ path('showProductName', 
                                         {'name':product.name}) }}'">
                                         {{product.name}}
-                                     </td>    
+                                    </td>    
+                                    <td class="ponterRead borderTrue">
+                                        {{product.pictureProduct}}
+                                    </td>
+
                                     {# <td>{{ product.name }}</td> #}
                                     <td class="pointerRead borderTrue" onclick="document.location='{{ path('showProductCategory', 
                                         {'name':product.Category.name}) }}'">
