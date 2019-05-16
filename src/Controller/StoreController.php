@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Freezer;
 use App\Entity\Product;
 use App\Entity\Category;
+use App\Entity\PictureProduct;
 
 use App\Form\StoreRegisterType;
 use App\Form\QuantityGrRegisterType;
@@ -17,6 +18,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\QuantityUnit;
 use App\Entity\QuantityGr;
 
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Form\PictureRegisterType;
+use Symfony\Component\Console\Logger\ConsoleLogger;
+
 class StoreController extends AbstractController
 {
     /**
@@ -28,6 +33,14 @@ class StoreController extends AbstractController
             'controller_name' => 'StoreController',
         ]);
     }
+
+    // private function addPicture(Form $form): Form
+    // {
+    //     return $form->add('PictureProduct', EntityType::class, [
+    //         "label" => "Images",
+    //         "class" => PictureProduct::class,
+    //     ]);
+    // }
 
     private function addCategory(Form $form): Form
     {
@@ -58,28 +71,92 @@ class StoreController extends AbstractController
      */
     public function createStore(Request $request)
     {
-        $createStore = new Product();
-        $form = $this->createForm(StoreRegisterType::class, $createStore);
-        $this->addCategory($form);
-        $this->addFreezer($form);
+        $createPicture = new PictureProduct();
+        $form2 = $this->createForm(PictureRegisterType::class, $createPicture);
 
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($createStore);
-            $em->flush();
-
-            $request->getSession()
-                ->getFlashBag()
-                ->add('action', 'Enregistrement réussi');
-            return $this->render('app/message.html.twig');
-        }
-
+        // if (empty ($form2) )
+        // { 
+            // $createStore = new Product();
+            // $form = $this->createForm(StoreRegisterType::class, $createStore);
+            // $this->addCategory($form);
+            // $this->addFreezer($form);   
+    
+            // $form->handleRequest($request);
+    
+            // if ($form->isSubmitted() && $form->isValid()) {
+            //     $em = $this->getDoctrine()->getManager();
+            //     $em->persist($createStore);
+            //     $em->flush();
+    
+            //     $request->getSession()
+            //         ->getFlashBag()
+            //         ->add('action', 'Enregistrement réussi');
+            //     return $this->render('app/message.html.twig');
+            // }       
+        // } 
+        // else 
+        // {
+            $createStore = new Product();
+            $form = $this->createForm(StoreRegisterType::class, $createStore);
+            $this->addCategory($form);
+            $this->addFreezer($form);
+            $createStore->setPictureProduct($createPicture);       
+    
+            $form->handleRequest($request);
+    
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($createStore);
+                $em->persist($createPicture);
+                $em->flush();
+    
+                $request->getSession()
+                    ->getFlashBag()
+                    ->add('action', 'Enregistrement réussi');
+                return $this->render('app/message.html.twig');
+            } 
+        // }
+ 
         return $this->render('store/create.html.twig', [
             'form' => $form->createView(),
+            'form2' => $form2->createView(),
         ]);
     }
+ 
+
+    // /**
+    //  * @Route("/createStore", name="createStore")
+    //  */
+    // public function createStore(Request $request)
+    // {
+    //     $createPicture = new PictureProduct();
+    //     $form2 = $this->createForm(PictureRegisterType::class, $createPicture);
+
+    //     $createStore = new Product();
+    //     $form = $this->createForm(StoreRegisterType::class, $createStore);
+    //     $this->addCategory($form);
+    //     $this->addFreezer($form);
+    //     $createStore->setPictureProduct($createPicture);
+
+    //     $form->handleRequest($request);
+
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $em = $this->getDoctrine()->getManager();
+    //         $em->persist($createStore);
+    //         $em->persist($createPicture);
+    //         $em->flush();
+
+    //         $request->getSession()
+    //             ->getFlashBag()
+    //             ->add('action', 'Enregistrement réussi');
+    //         return $this->render('app/message.html.twig');
+    //     }
+
+    //     return $this->render('store/create.html.twig', [
+    //         'form' => $form->createView(),
+    //         'form2' => $form2->createView(),
+    //     ]);
+    // }
 
     /**
      * @Route("/readStore", name="readStore")
@@ -88,12 +165,32 @@ class StoreController extends AbstractController
     {
         $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([], ['name'=>'ASC']);
         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name'=>'ASC']);
+        // $picture = base64_decode(PictureProduct::class);
+        $picture = $this->getDoctrine()->getManager()->getRepository(PictureProduct::class)->findAll();
 
+ 
         return $this->render('store/read.html.twig', [
             'products' => $products,
             'categories' => $categories,
+            'pictures' => $picture,
         ]);
     }
+
+    // /**
+    //  * @Route("/readStore", name="readStore")
+    //  */
+    // public function readStore(Request $request)
+    // {
+    //     $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([], ['name'=>'ASC']);
+    //     $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name'=>'ASC']);
+    //     $picture = $this->getDoctrine()->getManager()->getRepository(PictureProduct::class)->findAll();
+
+    //     return $this->render('store/read.html.twig', [
+    //         'products' => $products,
+    //         'categories' => $categories,
+    //         'pictures' => $picture,
+    //     ]);
+    // }
 
     /**
      * @Route ("/showProductCategory", name="showProductCategory")

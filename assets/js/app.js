@@ -31,4 +31,5 @@ import '../images/icone/Unvalidate.png';
 import '../images/icone/Validate.png';
 import '../images/icone/Home.png';
 import '../images/icone/Connexion.png';
+import '../images/icone/noCamera.png';
 

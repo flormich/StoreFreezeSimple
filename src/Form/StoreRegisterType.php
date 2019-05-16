@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Product;
+use App\Entity\PictureProduct;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,6 +13,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class StoreRegisterType extends AbstractType
 {
@@ -46,6 +48,12 @@ class StoreRegisterType extends AbstractType
                         // ]),
                     ],
             ])
+
+            // ->add('PictureProduct', FileType::class, [
+            //         "label" => "Images",
+            //         'attr' => array(
+            //             'accept' => 'image/*')
+            //     ])
 
             ->add('quantityUnit', IntegerType::class, [
                 "label" => "Quantités Unitaires",

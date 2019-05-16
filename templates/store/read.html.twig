@@ -88,16 +88,37 @@
 
                         {% for product in products %}
                             {% if product.Freezer.name|default is not empty %}
+                                {# {% if product.Picture.pictureProduct|default is not empty %} #}
 
                                 <tr class="textShadow">
                                     <td class="pointerRead borderTrue heightCellule" onclick="document.location='{{ path('showProductName', 
                                         {'name':product.name}) }}'">
-                                        {{product.name}}
+                                        {{ product.name }}
                                     </td>    
                                     <td class="ponterRead borderTrue">
                                         {# {{product.pictureProduct}} #}
-                                        <i class="material-icons">fastfood</i>
+                                        {# <i class="material-icons">fastfood</i> #}
+                                        {# <img src="{{asset('uploads/logo/'~company.getCompanyLogo)}}"> #}
+                                        {# <img src="{{ product.pictureProduct.picture|default(img = '../assets/images/icone/Tool.png') }}" /> #}
+
+                                        {% if product.name == product.name %}
+                                            <img src="../assets/images/products/{{product.name}}.jpg" width='90%' />
+                                        {% endif %}
+
+                                                                                                                          {# <img src="{{ product.pictureProduct.picture|default('../assets/images/icone/noPhoto.jpg') }}" width='90%' /> #}
+  
+
+
+
+
+                                        {# {% for picture in pictures %} #}
+                                        {# <img src="../assets/images/icone/Tool.png" width='35%'/> #}
+                                        {# {% endfor %} #}
+
+                                        {# {{ product.pictureProduct.picture }} #}
                                     </td>
+
+                                    
 
                                     {# <td>{{ product.name }}</td> #}
                                     <td class="pointerRead borderTrue" onclick="document.location='{{ path('showProductCategory', 
@@ -140,14 +161,24 @@
                                         </a>
                                     </td>
                                 </tr>
+                                {# {% endif %} #}
                             {% endif %}
                         {% endfor %}                        
                     </tbody>
                 </table>
             </div>
-            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <br>
         </div>
         {% include 'baseClose.html.php' %}
     </section>
+    <div class="mdl-tabs__tab-bar">
+        <b>
+        <br>
+        <br>
+        {# <hr color='grey'></hr> #}
+        <br>
+        <a class="mdl-navigation__link mdl-tabs__tab" href="createStore">Ajouter Produits</a>
+        <a class="mdl-navigation__link mdl-tabs__tab" href="readStore">Voir Produits</a>
+    </div>
 </div>
 {% endblock %}

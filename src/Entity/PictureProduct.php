@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PictureProductRepository")
@@ -21,6 +23,11 @@ class PictureProduct
      */
     private $name;
 
+    /**
+     * @ORM\Column(type="blob", length=255, nullable=true)
+     */
+    private $picture;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +42,17 @@ class PictureProduct
     {
         $this->name = $name;
 
+        return $this;
+    }
+
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    public function setPicture($picture): self
+    {
+        $this->picture = $picture;
         return $this;
     }
 }

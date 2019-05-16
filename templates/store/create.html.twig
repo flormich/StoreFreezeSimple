@@ -27,12 +27,14 @@
                     class: "row"
                 }
             }) }}
-            {# {{ form_start(form2, {
+
+            {{ form_start(form2, {
             attr: {
                 novalidate: "novalidate",
                 class: "row"
             }
-            }) }} #}
+            }) }}
+
             <div class="border col-12 col-lg6">
                 <table>
                     {# <tbody>                            #}
@@ -63,12 +65,18 @@
                             </td>
                         </tr>
                         <tr>
+                            <td  colspan="2">
+                                <br>
+                                {{ form_row(form2.picture) }}
+                            </td>
+                        </tr>
+                        <tr>
                             <td colspan="2">
                                 <br>
                                 <button class="material-icons mdl-button--myColorValidate mdl-js-button" type="submit">done_outline</button>
                                 <br>
                                 {{ form_end(form) }}
-                                {# {{ form_end(form2) }} #}
+                                {{ form_end(form2) }}
                                 <br>
                             </td>
                         </tr>
