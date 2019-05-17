@@ -88,44 +88,20 @@
 
                         {% for product in products %}
                             {% if product.Freezer.name|default is not empty %}
-                                {# {% if product.Picture.pictureProduct|default is not empty %} #}
-
                                 <tr class="textShadow">
                                     <td class="pointerRead borderTrue heightCellule" onclick="document.location='{{ path('showProductName', 
                                         {'name':product.name}) }}'">
                                         {{ product.name }}
                                     </td>    
                                     <td class="ponterRead borderTrue">
-                                        {# {{product.pictureProduct}} #}
-                                        {# <i class="material-icons">fastfood</i> #}
-                                        {# <img src="{{asset('uploads/logo/'~company.getCompanyLogo)}}"> #}
-                                        {# <img src="{{ product.pictureProduct.picture|default(img = '../assets/images/icone/Tool.png') }}" /> #}
-
                                         {% if product.name == product.name %}
                                             <img src="../assets/images/products/{{product.name}}.jpg" width='90%' />
                                         {% endif %}
-
-                                                                                                                          {# <img src="{{ product.pictureProduct.picture|default('../assets/images/icone/noPhoto.jpg') }}" width='90%' /> #}
-  
-
-
-
-
-                                        {# {% for picture in pictures %} #}
-                                        {# <img src="../assets/images/icone/Tool.png" width='35%'/> #}
-                                        {# {% endfor %} #}
-
-                                        {# {{ product.pictureProduct.picture }} #}
                                     </td>
-
-                                    
-
-                                    {# <td>{{ product.name }}</td> #}
                                     <td class="pointerRead borderTrue" onclick="document.location='{{ path('showProductCategory', 
                                         {'name':product.Category.name}) }}'">
                                         {{ product.Category.name }}
                                     </td>
-                                    {# <td>{{ product.Category.name }}</td>    #}
                                     <td class=" borderTrue">{{ product.quantityUnit }}</td>                                 
                                     <td class=" borderTrue">{{ product.quantityGr }}</td> 
                                     <td class=" borderTrue">{{ product.dlc }}</td>

@@ -71,8 +71,8 @@ class StoreController extends AbstractController
      */
     public function createStore(Request $request)
     {
-        $createPicture = new PictureProduct();
-        $form2 = $this->createForm(PictureRegisterType::class, $createPicture);
+        // $createPicture = new PictureProduct();
+        // $form2 = $this->createForm(PictureRegisterType::class, $createPicture);
 
         // if (empty ($form2) )
         // { 
@@ -100,14 +100,14 @@ class StoreController extends AbstractController
             $form = $this->createForm(StoreRegisterType::class, $createStore);
             $this->addCategory($form);
             $this->addFreezer($form);
-            $createStore->setPictureProduct($createPicture);       
+            // $createStore->setPictureProduct($createPicture);       
     
             $form->handleRequest($request);
     
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($createStore);
-                $em->persist($createPicture);
+                // $em->persist($createPicture);
                 $em->flush();
     
                 $request->getSession()
@@ -119,7 +119,7 @@ class StoreController extends AbstractController
  
         return $this->render('store/create.html.twig', [
             'form' => $form->createView(),
-            'form2' => $form2->createView(),
+            // 'form2' => $form2->createView(),
         ]);
     }
  
@@ -165,14 +165,13 @@ class StoreController extends AbstractController
     {
         $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([], ['name'=>'ASC']);
         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name'=>'ASC']);
-        // $picture = base64_decode(PictureProduct::class);
-        $picture = $this->getDoctrine()->getManager()->getRepository(PictureProduct::class)->findAll();
+        // $picture = $this->getDoctrine()->getManager()->getRepository(PictureProduct::class)->findAll();
 
  
         return $this->render('store/read.html.twig', [
             'products' => $products,
             'categories' => $categories,
-            'pictures' => $picture,
+            // 'pictures' => $picture,
         ]);
     }
 
@@ -253,19 +252,19 @@ class StoreController extends AbstractController
     //     ]);
     // }
 
-    /**
-     * @Route("/showProduct", name="showProduct")
-     */
-     public function showProduct()
-     {
-         $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'Asc']);
-         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([],['name' => 'Asc']);
+    // /**
+    //  * @Route("/showProduct", name="showProduct")
+    //  */
+    //  public function showProduct()
+    //  {
+    //      $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'Asc']);
+    //      $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([],['name' => 'Asc']);
  
-         return $this->render('store/read.html.twig', [
-             'products' => $products,
-             'categories' => $categories,
-         ]);
-     }
+    //      return $this->render('store/read.html.twig', [
+    //          'products' => $products,
+    //          'categories' => $categories,
+    //      ]);
+    //  }
 
     /**
      * @Route("/deleteP/{id}", name="deleteProduct")
@@ -387,7 +386,7 @@ class StoreController extends AbstractController
     public function showProductNameAsc()
     {
         $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'ASC']);
-        $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([],['name' => 'ASC']);
+        $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name'=>'ASC']);
 
         return $this->render('store/read.html.twig', [
             'products' => $products,
@@ -398,16 +397,16 @@ class StoreController extends AbstractController
     /**
      * @Route("/showProductCatAsc", name="showProductCatAsc")
      */
-     public function showProductCatAsc()
-     {
-         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([],['name' => 'ASC']);
-         $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'ASC']);
- 
-         return $this->render('store/read.html.twig', [
-            'categories' => $categories, 
+    public function showProductCatAsc()
+    {
+        $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([], ['category' => 'ASC']);
+        $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name' => 'ASC']);
+
+        return $this->render('store/read.html.twig', [
             'products' => $products,
-         ]);
-     }
+            'categories' => $categories,             
+        ]);
+    }
 
     /**
      * @Route("/showProductTirAsc", name="showProductTirAsc")
