@@ -47,16 +47,17 @@
                     </thead>
                     <tbody>
                         {% set newArray = [] %}
-                            {% for product in products %}
-                                {% if product.Freezer.name|default is not empty %}
-                                    {% if product.name not in newArray %}
+                            {% for productAsc in productsAsc %}
+                            {# {% for product in products %} #}
+                                {% if productAsc.Freezer.name|default is not empty %}
+                                    {% if productAsc.name not in newArray %}
                                     <tr>
                                         <td class="pointerRead borderTrue textShadow" onclick="document.location='{{ path('showProductName', 
-                                            {'name':product.name}) }}'">
-                                            {{product.name}}
+                                            {'name':productAsc.name}) }}'">
+                                            {{productAsc.name}}
                                         </td>
                                     </tr>
-                                    {% set newArray = newArray|merge([product.name]) %}
+                                    {% set newArray = newArray|merge([productAsc.name]) %}
                                     {% endif %}
                                 {% endif %}
                             {% endfor %}

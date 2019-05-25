@@ -165,12 +165,14 @@ class StoreController extends AbstractController
     {
         $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([], ['name'=>'ASC']);
         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name'=>'ASC']);
+        $productsAsc = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'ASC']);
         // $picture = $this->getDoctrine()->getManager()->getRepository(PictureProduct::class)->findAll();
 
  
         return $this->render('store/read.html.twig', [
             'products' => $products,
             'categories' => $categories,
+            'productsAsc' => $productsAsc,
             // 'pictures' => $picture,
         ]);
     }
@@ -197,6 +199,7 @@ class StoreController extends AbstractController
     public function showProductCategory(Request $request)
     {
         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name'=>'ASC']);
+        $productsAsc = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'ASC']);
 
         $request = Request::createFromGlobals();
         $valeur = $request->query->get('name');
@@ -213,6 +216,7 @@ class StoreController extends AbstractController
         return $this->render('store/read.html.twig', [
             'products' => $allProduct,
             'categories' => $categories,
+            'productsAsc' => $productsAsc,
         ]);
     }
 
@@ -226,10 +230,12 @@ class StoreController extends AbstractController
 
         $productName = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy(['name' => $valeur]);
         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name' => 'ASC']);
+        $productsAsc = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'ASC']);
 
         return $this->render('store/read.html.twig', [
             'products' => $productName,
             'categories' => $categories,
+            'productsAsc' => $productsAsc,
         ]);
     }
 
@@ -387,10 +393,12 @@ class StoreController extends AbstractController
     {
         $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'ASC']);
         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name'=>'ASC']);
+        $productsAsc = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'ASC']);
 
         return $this->render('store/read.html.twig', [
             'products' => $products,
             'categories' => $categories,
+            'productsAsc' => $productsAsc,
         ]);
     }
 
@@ -399,12 +407,14 @@ class StoreController extends AbstractController
      */
     public function showProductCatAsc()
     {
-        $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([], ['category' => 'ASC']);
+        $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([], ['category' => 'ASC', 'name' => 'ASC']);
         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name' => 'ASC']);
+        $productsAsc = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'ASC']);
 
         return $this->render('store/read.html.twig', [
             'products' => $products,
-            'categories' => $categories,             
+            'categories' => $categories, 
+            'productsAsc' => $productsAsc,            
         ]);
     }
 
@@ -413,12 +423,14 @@ class StoreController extends AbstractController
      */
     public function showProductTirAsc()
     {
-        $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['freezer' => 'ASC']);
+        $products = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['freezer' => 'ASC', 'name' => 'ASC']);
         $categories = $this->getDoctrine()->getManager()->getRepository(Category::class)->findBy([], ['name' => 'ASC']);
+        $productsAsc = $this->getDoctrine()->getManager()->getRepository(Product::class)->findBy([],['name' => 'ASC']);
  
         return $this->render('store/read.html.twig', [
             'products' => $products,
             'categories' => $categories,
+            'productsAsc' => $productsAsc,
         ]);
     }
 }
